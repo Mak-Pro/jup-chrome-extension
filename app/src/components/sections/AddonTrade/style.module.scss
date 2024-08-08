@@ -1,0 +1,356 @@
+.trade {
+  position: relative;
+  padding: 15px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+
+  // signals
+  &__signals {
+    position: relative;
+    background-color: $gray00;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px 0;
+    padding: 18px;
+
+    &_close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: $gray10;
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 2;
+    }
+
+    &_icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: $gray10;
+    }
+  }
+
+  //token
+  &__token {
+    display: flex;
+    flex-direction: column;
+    gap: 12px 0;
+
+    &_top {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &_bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 10px 0;
+    }
+
+    &_avatar {
+      position: relative;
+      min-width: 72px;
+      max-width: 72px;
+      min-height: 72px;
+      max-height: 72px;
+      background: linear-gradient(
+        90deg,
+        rgba(253, 255, 134, 1) 0%,
+        rgba(160, 248, 153, 1) 50%,
+        rgba(77, 182, 242, 1) 100%
+      );
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &::before {
+        content: "";
+        display: block;
+        min-width: 66px;
+        max-width: 66px;
+        min-height: 66px;
+        max-height: 66px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $black;
+        border-radius: 50%;
+        z-index: 0;
+      }
+
+      img {
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    &_info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px 0;
+      margin-left: 10px;
+    }
+
+    &_title {
+      font-size: 20px;
+      font-weight: 700;
+
+      span {
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: $gray40;
+        display: inline-block;
+        margin-left: 4px;
+      }
+    }
+
+    &_address {
+      background-color: $gray00;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0 8px;
+      height: 32px;
+      padding: 0 12px;
+      font-size: 14px;
+      color: $gray30;
+
+      button {
+        line-height: 0;
+      }
+    }
+
+    &_switcher {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      background-color: $gray00;
+      align-self: flex-start;
+      border-radius: 50px;
+      height: 32px;
+      gap: 0 2px;
+      padding: 0 2px;
+      cursor: pointer;
+      margin-left: auto;
+
+      &::before {
+        content: "";
+        display: block;
+        min-width: 28px;
+        min-height: 28px;
+        max-width: 28px;
+        max-height: 28px;
+        background-color: $gray20;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 2px;
+      }
+
+      &_state {
+        min-width: 28px;
+        min-height: 28px;
+        max-width: 28px;
+        max-height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+    }
+
+    &_price {
+      display: flex;
+      align-items: center;
+      gap: 0 12px;
+
+      &_direction {
+        display: inline-flex;
+        align-items: center;
+        height: 32px;
+        border-radius: 8px;
+        gap: 0 4px;
+        background-color: $gray00;
+        padding: 0 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: $gray30;
+        font-weight: 400;
+      }
+    }
+
+    &_stats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 4px 0;
+        font-size: 12px;
+        color: $gray30;
+
+        span {
+          font-size: 16px;
+          color: $white;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  // actions
+  &__actions {
+    background-color: $gray00;
+    border-radius: 20px;
+    padding: 16px;
+  }
+
+  // tabs
+  &__tabs {
+    position: relative;
+
+    &__controls {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    &__control {
+      display: inline-flex;
+      align-items: center;
+      text-align: center;
+      height: 44px;
+      padding: 0 20px;
+      font-size: 16px;
+      font-weight: 400;
+      border-radius: 100px;
+      color: $gray40;
+      filter: grayscale(1);
+      transition: all 0.3s ease 0s;
+      cursor: pointer;
+
+      &_active {
+        background-color: $gray10;
+        font-weight: 600;
+        filter: grayscale(0);
+      }
+
+      &_buy {
+        color: $green;
+      }
+
+      &_sell {
+        color: $red;
+      }
+    }
+
+    &__panels {
+    }
+
+    &__panel {
+    }
+  }
+
+  // edit
+  &__edit {
+    position: relative;
+
+    &_btn {
+      min-width: 36px;
+      max-width: 36px;
+      min-height: 36px;
+      max-height: 36px;
+      background-color: $gray10;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &_choice {
+      display: inline-flex;
+      align-items: center;
+      background-color: $gray10;
+      height: 36px;
+      border-radius: 50px;
+      position: relative;
+
+      &::after {
+        content: "";
+        height: 18px;
+        width: 1px;
+        background-color: $gray20;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      button {
+        width: 35px;
+        height: 36px;
+        line-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    &_tabs {
+      position: absolute;
+      right: 0;
+      top: 5px;
+    }
+  }
+
+  // options
+  &__options {
+  }
+
+  &__option {
+    &_edit {
+    }
+  }
+
+  // custom
+  &__custom {
+    &_value {
+    }
+  }
+
+  //shortcuts
+  &__shortcuts {
+    &__header {
+    }
+
+    &__body {
+    }
+  }
+
+  &__shortcut {
+    &_combination {
+      &_unit {
+      }
+    }
+  }
+}
