@@ -10,6 +10,7 @@ export const Button = ({
   type,
   variant,
   color,
+  textColor,
   href,
   onClick,
   target,
@@ -103,6 +104,8 @@ export const Button = ({
         color:
           variant === "outlined" || variant === "text"
             ? color
+            : textColor
+            ? textColor
             : cssVariables.black,
         backgroundColor: variant === "filled" ? color : "transparent",
         borderColor:

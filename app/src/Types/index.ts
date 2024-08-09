@@ -13,6 +13,7 @@ export interface ButtonProps {
   className?: string;
   disabled?: boolean;
   color?: string;
+  textColor?: string;
   reset?: boolean;
   submit?: boolean;
   borderRadius?: number;

@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px 0;
+  z-index: 11;
 
   // signals
   &__signals {
@@ -193,7 +194,15 @@
         font-size: 14px;
         font-weight: 500;
         color: $gray30;
-        font-weight: 400;
+        font-weight: 500;
+
+        &_up {
+          color: $green40;
+        }
+
+        &_down {
+          color: $red40;
+        }
       }
     }
 
@@ -224,11 +233,17 @@
     background-color: $gray00;
     border-radius: 20px;
     padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px 0;
   }
 
   // tabs
   &__tabs {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px 0;
 
     &__controls {
       display: inline-flex;
@@ -256,18 +271,20 @@
       }
 
       &_buy {
-        color: $green;
+        color: $green40;
       }
 
       &_sell {
-        color: $red;
+        color: $red40;
       }
     }
 
     &__panels {
+      position: relative;
     }
 
     &__panel {
+      position: relative;
     }
   }
 
@@ -325,31 +342,294 @@
 
   // options
   &__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 0;
   }
 
   &__option {
+    position: relative;
+    width: calc(100% / 3);
+    padding: 0 4px;
+
+    button {
+      height: 52px;
+      width: 100%;
+      font-weight: 600;
+    }
+
     &_edit {
+      position: relative;
+      background-color: $black;
+      border-radius: 12px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $gray40;
+      font-size: 14px;
+      gap: 0 5px;
+      padding: 0 10px;
+
+      i {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $gray10;
+        border-radius: 12px;
+        transition: all 0.3s ease 0s;
+      }
+
+      input {
+        position: relative;
+        border-radius: 0;
+        height: auto;
+        background-color: transparent;
+        border: 0 none;
+        color: $gray40;
+        padding: 0;
+        width: 50%;
+        text-align: right;
+        transition: all 0.3s ease 0s;
+        z-index: 2;
+
+        &:focus {
+          color: $gray30;
+
+          & ~ span {
+            color: $gray30;
+          }
+
+          & ~ i {
+            border-color: $gray20;
+          }
+        }
+      }
+
+      span {
+        position: relative;
+        display: inline-block;
+        width: 50%;
+        transition: all 0.3s ease 0s;
+        z-index: 2;
+      }
     }
   }
 
   // custom
   &__custom {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    font-size: 14px;
+
+    button {
+      flex: 1;
+      height: 52px;
+      white-space: nowrap;
+    }
+
     &_value {
+      position: relative;
+      width: 154px;
+      max-width: 45%;
+      display: flex;
+      align-items: center;
+      background-color: $black;
+      border-radius: 12px;
+      height: 52px;
+      padding: 0 15px;
+      gap: 0 10px;
+
+      input {
+        position: relative;
+        background-color: transparent;
+        height: auto;
+        border: 0 none;
+        z-index: 1;
+        text-align: right;
+        padding: 0;
+        border-radius: 0;
+        order: 1;
+        color: $gray40;
+        transition: all 0.3s ease 0s;
+
+        &:focus {
+          color: $gray30;
+          & ~ span {
+            color: $gray30;
+          }
+
+          & ~ i {
+            border-color: $gray20;
+          }
+        }
+      }
+
+      i {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $gray10;
+        transition: all 0.3s ease 0s;
+        z-index: 0;
+        border-radius: 12px;
+      }
+
+      span {
+        color: $gray40;
+        transition: all 0.3s ease 0s;
+        order: 2;
+
+        &:nth-of-type(1) {
+          order: 0;
+        }
+      }
     }
   }
 
   //shortcuts
   &__shortcuts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px 0;
+    border: 1px solid $gray10;
+    border-radius: 20px;
+    padding: 14px 16px 16px;
+
     &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h6 {
+        font-weight: 500;
+      }
     }
 
     &__body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px 0;
     }
   }
 
   &__shortcut {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: $gray100;
+    white-space: nowrap;
+    gap: 0 8px;
+
+    @media only screen and (max-width: 399px) {
+      gap: 0 4px;
+      font-size: 12px;
+    }
+
     &_combination {
+      display: inline-flex;
+      align-items: center;
+      gap: 0 8px;
+      border: 1px solid transparent;
+
+      &_edit {
+        border-color: $gray10;
+        padding: 9px 10px;
+        border-radius: 12px;
+      }
+
+      @media only screen and (max-width: 399px) {
+        gap: 0 4px;
+      }
+
       &_unit {
+        display: inline-flex;
+        align-items: center;
+        font-weight: 500;
+        color: $gray100;
+        background-color: $gray00;
+        gap: 0 6px;
+        border-radius: 8px;
+        height: 32px;
+        padding: 0 8px;
+      }
+    }
+
+    &_input {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 58px;
+      max-width: 58px;
+      text-align: center;
+      gap: 0 2px;
+      height: 52px;
+      border-radius: 12px;
+      padding: 0 10px;
+      margin-left: auto;
+
+      &_inverted {
+        flex-direction: row-reverse;
+
+        input {
+          text-align: left !important;
+        }
+      }
+
+      span {
+        position: relative;
+        color: $gray40;
+        transition: all 0.3s ease 0s;
+        z-index: 2;
+      }
+
+      i {
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $gray10;
+        border-radius: 12px;
+        z-index: 0;
+        transition: all 0.3s ease 0s;
+      }
+
+      input {
+        color: $gray40;
+        background-color: transparent;
+        height: auto;
+        border-radius: 0;
+        border: 0 none;
+        padding: 0;
+        width: 44%;
+        position: relative;
+        z-index: 2;
+        text-align: right;
+        transition: all 0.3s ease 0s;
+
+        @media only screen and (max-width: 399px) {
+          font-size: 12px;
+        }
+
+        &:focus {
+          color: $white;
+
+          & ~ span {
+            color: $white;
+          }
+          & ~ i {
+            border-color: $gray20;
+          }
+        }
       }
     }
   }
